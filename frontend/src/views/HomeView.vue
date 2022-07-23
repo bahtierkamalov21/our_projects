@@ -8,13 +8,13 @@
     <!-- Swiper -->
     <div class="swiper">
       <!-- Drawer -->
-      <home-drawer :drawer="drawer" />
+      <home-drawer :drawer="drawer" :projects="projects" />
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <home-main />
         </div>
         <div class="swiper-slide">
-          <home-projects />
+          <home-projects :projects="projects" />
         </div>
         <div class="swiper-slide">
           <home-contacts />
@@ -49,7 +49,7 @@ export default {
       drawer: null,
       location_hash: location.hash,
       // backend
-      info: null,
+      projects: null,
     };
   },
   mounted() {
@@ -74,13 +74,13 @@ export default {
         document.title = "Our Projects - Contacts";
       }
     });
-  },
-  created() {
     // backend
-    axios.get("http://127.0.0.1:8000/api/").then((response) => {
-      this.info = response;
-      console.log(this.info.json);
-    });
+    axios
+      .get("http://127.0.0.1:8000/api/v1/projects")
+      .then((response) => {
+        this.projects = response.data;
+      })
+      .catch((error) => console.log(error));
   },
   methods: {
     get_drawer(drawer) {
@@ -102,10 +102,6 @@ export default {
 <style lang="scss" scoped>
 .swiper {
   overflow: hidden;
-  min-height: 100vh;
-}
-.drawer {
-  z-index: 100;
-  backdrop-filter: blur(16px);
+  height: 89vh;
 }
 </style>

@@ -1,5 +1,10 @@
 <template>
   <header class="header">
+    <img
+      class="header__background-blocks"
+      src="@/assets/images/background_blocks.svg"
+      alt="header-background-blocks"
+    />
     <v-container class="header__container">
       <v-col class="header__col pt-0 pb-0">
         <v-row class="header__content align-center">
@@ -39,6 +44,13 @@ export default {
 <style lang="scss" scoped>
 .header {
   height: 100%;
+  position: relative;
+  &__background-blocks {
+    position: absolute;
+    width: 40vw;
+    bottom: -15vh;
+    right: 2%;
+  }
   &__container {
     height: 100%;
   }
@@ -47,7 +59,6 @@ export default {
   }
   &__content {
     height: 100%;
-    padding-top: 5vh;
   }
   &__left {
     width: 50%;
@@ -58,15 +69,18 @@ export default {
     font-weight: 600;
   }
   &__subtitle {
-    font-size: calc(var(--index) * 1.2);
-    line-height: 32px;
-    letter-spacing: -1px;
+    font-size: calc(var(--index) * 1);
+    line-height: 24px;
+    color: #fff;
+    padding: 12px;
+    border-radius: 5px;
+    background-color: #171321;
+    display: inline-block;
   }
   &__right {
     width: 50%;
     display: flex;
     justify-content: center;
-
     & > div {
       width: 80%;
     }
@@ -74,16 +88,31 @@ export default {
 }
 @media screen and (max-width: 960px) {
   .header {
+    &__subtitle {
+      line-height: 24px;
+    }
     &__left {
       width: 50%;
     }
     &__h1 {
       line-height: 52px;
     }
+    &__right {
+      width: 48%;
+      padding-right: 12px;
+    }
   }
 }
 @media screen and (max-width: 600px) {
   .header {
+    padding-top: 16px;
+    &__background-blocks {
+      width: 70vw;
+    }
+    &__subtitle {
+      font-size: calc(var(--index) * 1.3);
+      line-height: 18px;
+    }
     &__left {
       width: 100%;
     }
@@ -95,15 +124,9 @@ export default {
     &__h1 {
       line-height: 42px;
     }
-    &__subtitle {
-      font-size: calc(var(--index) * 1.2);
-      line-height: 16px;
-      letter-spacing: -1px;
-    }
     &__content {
       align-items: center !important;
       display: block;
-      padding-top: 15vh;
     }
     &__chip {
       width: 80vw;

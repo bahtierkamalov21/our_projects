@@ -1,5 +1,8 @@
 <template>
-  <v-container>sdcsdcsd</v-container>
+  <v-footer color="#efefef" class="footer pa-0">
+    <v-container class="footer__container"></v-container>
+    <div class="footer__bottom"></div>
+  </v-footer>
 </template>
 
 <script>
@@ -8,4 +11,15 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.footer {
+  height: 100%;
+  &__container {
+    height: 84%;
+  }
+  &__bottom {
+    background-color: #171321;
+    height: 64px;
+  }
+}
+</style>
