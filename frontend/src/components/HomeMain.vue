@@ -1,5 +1,6 @@
 <template>
   <header class="header">
+    <v-sheet color="background" class="header__background"></v-sheet>
     <v-container class="header__container">
       <v-col class="header__col pt-0 pb-0">
         <v-row class="header__content align-center">
@@ -40,15 +41,24 @@ export default {
 .header {
   height: 100%;
   position: relative;
-  background-color: #f3f3f3;
   &__container {
     height: 100%;
+  }
+  &__background {
+    width: 100%;
+    height: 82%;
+    position: absolute;
+    bottom: 0;
+    background-color: white;
+    box-shadow: 0 -4px 10px 0 rgba(23, 19, 33, 0.2) !important;
   }
   &__col {
     height: 100%;
   }
   &__content {
     height: 100%;
+    position: relative;
+    z-index: 1;
   }
   &__left {
     width: 50%;

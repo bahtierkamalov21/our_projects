@@ -8,7 +8,9 @@
 export default {
   name: "App",
 
-  data: () => ({}),
+  data() {
+    return {};
+  },
 };
 </script>
 
@@ -25,7 +27,18 @@ html {
 .v-application {
   font-family: "Inter", sans-serif !important;
 }
+.swiper-pagination-bullet {
+  background: var(--v-black-base);
+}
 .swiper-pagination-bullet-active {
-  background: #171321;
+  background: var(--v-black-base);
+}
+
+/* change theme */
+.theme--light {
+  transition: all 0.4s ease;
+}
+.theme--dark {
+  transition: all 0.4s ease;
 }
 </style>

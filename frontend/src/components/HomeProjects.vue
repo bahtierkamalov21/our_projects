@@ -1,6 +1,20 @@
 <template>
   <section class="projects">
+    <div class="projects__background">
+      <h2>Our completed projects</h2>
+    </div>
     <v-container class="projects__container">
+      <v-card
+        width="100%"
+        height="50%"
+        class="projects__none mb-6"
+        v-if="!length"
+      >
+        <v-card-title class="pa-8 ma-0">Projects coming soon...</v-card-title>
+        <span style="color: var(--v-black-base)">
+          <font-awesome-icon icon="fa-solid fa-code" class="fa-3x" />
+        </span>
+      </v-card>
       <v-card
         width="100%"
         height="80%"
@@ -19,6 +33,7 @@
         class="projects__pagination"
         v-model="pages"
         :length="length"
+        v-if="length"
       ></v-pagination>
     </v-container>
   </section>
@@ -61,13 +76,44 @@ export default {
 <style lang="scss" scoped>
 .projects {
   height: 100%;
-  background-color: #f3f3f3;
+  position: relative;
+  &__background {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 35%;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: calc(var(--index) * 2);
+  }
   &__container {
     height: 100%;
     align-items: center;
     flex-direction: column;
     display: flex;
     justify-content: center;
+  }
+  &__none {
+    position: relative;
+    top: 20px;
+    border-radius: 4px !important;
+    box-shadow: 0 1.6px 3.6px 0 rgb(0 0 0 / 13%),
+      0 0.3px 0.9px 0 rgb(0 0 0 / 11%) !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & > *:first-child {
+      text-transform: uppercase;
+      font-size: 22px;
+      font-weight: 600;
+      width: -webkit-fill-available;
+    }
+    & > *:last-child {
+      margin-top: 4%;
+    }
   }
   &__cards {
     border-radius: 12px !important;

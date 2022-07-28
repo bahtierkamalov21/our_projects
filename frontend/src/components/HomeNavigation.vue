@@ -46,8 +46,8 @@
       class="nav__bars mr-2"
       v-if="!mobile"
     >
-      <span style="color: dodgerblue">
-        <font-awesome-icon icon="fa-brands fa-telegram" class="fa-2xl" />
+      <span :class="{ 'nav__bars-dark': this.$vuetify.theme.dark }">
+        <font-awesome-icon icon="fa-brands fa-telegram" class="fa-2x" />
       </span>
     </v-btn>
     <v-btn
@@ -59,7 +59,28 @@
       class="nav__bars mr-2"
       v-if="!mobile"
     >
-      <font-awesome-icon icon="fa-brands fa-git-square" class="fa-2xl" />
+      <span :class="{ 'nav__bars-dark': this.$vuetify.theme.dark }">
+        <font-awesome-icon icon="fa-brands fa-git-square" class="fa-2xl" />
+      </span>
+    </v-btn>
+    <!-- theme change -->
+    <v-btn
+      min-width="32"
+      width="32"
+      min-height="32"
+      height="32"
+      color="white"
+      class="nav__bars mr-2"
+      @click="change_theme"
+    >
+      <span :class="{ 'nav__bars-dark': this.$vuetify.theme.dark }">
+        <font-awesome-icon
+          v-if="!$vuetify.theme.dark"
+          icon="fa-solid fa-moon"
+          class="fa-xl"
+        />
+        <font-awesome-icon v-else icon="fa-solid fa-sun" class="fa-xl" />
+      </span>
     </v-btn>
     <v-btn
       min-width="32"
@@ -70,7 +91,9 @@
       class="nav__bars"
       @click="open_drawer"
     >
-      <font-awesome-icon icon="fa-solid fa-bars" class="fa-xl" />
+      <span :class="{ 'nav__bars-dark': this.$vuetify.theme.dark }">
+        <font-awesome-icon icon="fa-solid fa-bars" class="fa-xl" />
+      </span>
     </v-btn>
   </v-app-bar>
 </template>
@@ -117,6 +140,9 @@ export default {
       this.navigation_index = index;
       this.$emit("get_navigation_index", this.navigation_index);
     },
+    change_theme() {
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+    },
   },
 };
 </script>
@@ -137,6 +163,9 @@ export default {
   &__bars {
     border-radius: 5px;
     background-color: #ffffff !important;
+    &-dark {
+      color: black;
+    }
   }
 }
 </style>

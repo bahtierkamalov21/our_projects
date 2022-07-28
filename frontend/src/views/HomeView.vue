@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home">
     <!-- Navigation -->
     <home-navigation
       @get_drawer="get_drawer"
@@ -103,6 +103,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.home {
+  background-color: #f7f7f7;
+}
 .swiper {
   overflow: hidden;
   height: 90vh;
