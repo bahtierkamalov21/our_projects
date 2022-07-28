@@ -1,10 +1,5 @@
 <template>
   <header class="header">
-    <img
-      class="header__background-blocks"
-      src="@/assets/images/background_blocks.svg"
-      alt="header-background-blocks"
-    />
     <v-container class="header__container">
       <v-col class="header__col pt-0 pb-0">
         <v-row class="header__content align-center">
@@ -45,12 +40,7 @@ export default {
 .header {
   height: 100%;
   position: relative;
-  &__background-blocks {
-    position: absolute;
-    width: 40vw;
-    bottom: -15vh;
-    right: 2%;
-  }
+  background-color: #f3f3f3;
   &__container {
     height: 100%;
   }
@@ -106,9 +96,6 @@ export default {
 @media screen and (max-width: 600px) {
   .header {
     padding-top: 16px;
-    &__background-blocks {
-      width: 70vw;
-    }
     &__subtitle {
       font-size: calc(var(--index) * 1.3);
       line-height: 18px;

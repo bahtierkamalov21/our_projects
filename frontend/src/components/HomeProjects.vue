@@ -1,31 +1,59 @@
 <template>
-  <main class="projects">
-    <v-container class="pt-10">
+  <section class="projects">
+    <v-container class="projects__container">
       <v-card
-        height="70vh"
-        class="projects__card"
-        v-for="project in projects.slice(this.index_before, this.index_after)"
+        width="100%"
+        height="80%"
+        class="projects__cards mb-3"
+        v-for="project in slice_projects"
         :key="project.id"
       >
         <v-card-title>{{ project.title }}</v-card-title>
+        <ul>
+          <li v-for="item in project.stack.split(',')" :key="item.id">
+            {{ item }}
+          </li>
+        </ul>
       </v-card>
       <v-pagination
         class="projects__pagination"
-        :length="projects.length"
+        v-model="pages"
+        :length="length"
       ></v-pagination>
     </v-container>
-  </main>
+  </section>
 </template>
 
 <script>
 export default {
   name: "HomeProjects",
-  props: ["projects"],
+  props: {
+    projects: Array,
+  },
   data() {
     return {
-      index_before: 0,
-      index_after: 1,
+      get_projects: null,
+      pages: 1,
+      length: null,
+      slice_projects: null,
+      before: 0,
+      after: 1,
     };
+  },
+  mounted() {
+    // Инициализация данных из пропса требует времени...
+    setTimeout(() => {
+      this.get_projects = this.projects;
+      this.length = this.get_projects.length;
+      this.slice_projects = this.get_projects.slice(this.before, this.after);
+    }, 1500);
+  },
+  watch: {
+    pages() {
+      this.before = this.pages - 1;
+      this.after = this.pages;
+      this.slice_projects = this.get_projects.slice(this.before, this.after);
+    },
   },
 };
 </script>
@@ -33,27 +61,17 @@ export default {
 <style lang="scss" scoped>
 .projects {
   height: 100%;
-  position: relative;
-  &__card {
-    border-radius: 10px !important;
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2) !important;
+  background-color: #f3f3f3;
+  &__container {
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
   }
-  &__pagination {
-    position: absolute;
-    bottom: 12px;
-    left: 0;
-    margin-left: 50%;
-    transform: translate(-50%);
-  }
-}
-@media screen and (max-width: 960px) {
-  .projects__card {
-    width: 95%;
-  }
-}
-@media screen and (max-width: 600px) {
-  .projects__card {
-    width: 88%;
+  &__cards {
+    border-radius: 12px !important;
+    box-shadow: 0 0 20px 0 rgba(34, 60, 80, 0.2) !important;
   }
 }
 </style>

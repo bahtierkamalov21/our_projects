@@ -68,10 +68,13 @@ export default {
     this.swiper.on("activeIndexChange", function () {
       if (this.activeIndex === 0) {
         document.title = "Our Projects";
+        document.getElementById("swiper__index").innerHTML = "0";
       } else if (this.activeIndex === 1) {
         document.title = "Our Projects - Projects";
+        document.getElementById("swiper__index").innerHTML = "1";
       } else if (this.activeIndex === 2) {
         document.title = "Our Projects - Contacts";
+        document.getElementById("swiper__index").innerHTML = "2";
       }
     });
     // backend
@@ -102,6 +105,6 @@ export default {
 <style lang="scss" scoped>
 .swiper {
   overflow: hidden;
-  height: 89vh;
+  height: 90vh;
 }
 </style>

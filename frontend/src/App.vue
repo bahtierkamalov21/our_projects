@@ -18,6 +18,10 @@ export default {
   --index: calc(1vw + 1vh);
 }
 
+html {
+  overflow: hidden !important;
+}
+
 .v-application {
   font-family: "Inter", sans-serif !important;
 }

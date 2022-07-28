@@ -1,50 +1,40 @@
-<svg width="2532" height="2061" viewBox="0 0 2532 2061" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="2633" height="2167" viewBox="0 0 2633 2167" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_d_209_12)">
 <path d="M50 50H2482V1650C2482 1760.46 2392.46 1850 2282 1850H50V50Z" fill="white"/>
 <rect x="50" y="50" width="2432" height="120" fill="#171321"/>
-<rect x="172" y="411" width="840" height="120" rx="5" fill="#171321"/>
-<rect x="172" y="581" width="680" height="120" rx="5" fill="#171321"/>
-<rect x="172" y="751" width="450" height="120" rx="5" fill="#171321"/>
+<rect x="172" y="641" width="840" height="120" rx="10" fill="#171321"/>
+<rect x="172" y="511" width="840" height="80" rx="40" fill="#1976D2"/>
+<rect x="172" y="811" width="680" height="120" rx="10" fill="#171321"/>
+<rect x="172" y="981" width="450" height="120" rx="10" fill="#171321"/>
 <rect x="100" y="74" width="72" height="72" rx="12" fill="#FAFAFA"/>
 <path d="M123.365 130H117.801V92.664H123.365V130ZM158.033 97.292H146.177V130H140.665V97.292H128.757V92.664H158.033V97.292Z" fill="black"/>
-<path d="M109 86C109 83.7909 110.791 82 113 82V82C115.209 82 117 83.7909 117 86V86C117 88.2091 115.209 90 113 90V90C110.791 90 109 88.2091 109 86V86Z" fill="black"/>
+<path d="M109 86C109 83.7909 110.791 82 113 82C115.209 82 117 83.7909 117 86C117 88.2091 115.209 90 113 90C110.791 90 109 88.2091 109 86Z" fill="black"/>
 <mask id="mask0_209_12" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="100" y="74" width="72" height="72">
 <rect x="100" y="74" width="72" height="72" rx="12" fill="#FAFAFA"/>
 </mask>
 <g mask="url(#mask0_209_12)">
 <path d="M89 146.285C111 132.685 116.167 144.285 116 151.785" stroke="#2196F3" stroke-width="18"/>
 </g>
-<rect x="2360" y="74" width="72" height="72" rx="20" fill="#D9D9D9"/>
-<rect x="2268" y="74" width="72" height="72" rx="20" fill="#D9D9D9"/>
-<rect x="2004" y="74" width="240" height="72" rx="10" fill="#D9D9D9"/>
-<rect x="2191" y="799" width="72" height="72" rx="12" fill="#FAFAFA"/>
-<path d="M2214.37 855H2208.8V817.664H2214.37V855ZM2249.03 822.292H2237.18V855H2231.66V822.292H2219.76V817.664H2249.03V822.292Z" fill="black"/>
-<path d="M2200 811C2200 808.791 2201.79 807 2204 807V807C2206.21 807 2208 808.791 2208 811V811C2208 813.209 2206.21 815 2204 815V815C2201.79 815 2200 813.209 2200 811V811Z" fill="black"/>
-<mask id="mask1_209_12" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="2191" y="799" width="72" height="72">
-<rect x="2191" y="799" width="72" height="72" rx="12" fill="#FAFAFA"/>
-</mask>
-<g mask="url(#mask1_209_12)">
-<path d="M2180 871.285C2202 857.685 2207.17 869.285 2207 876.785" stroke="#2196F3" stroke-width="18"/>
-</g>
-<rect x="1115" y="1194.6" width="683" height="786" transform="rotate(-10 1115 1194.6)" fill="#DF85FF" fill-opacity="0.73"/>
-<rect x="1374.95" y="837.193" width="772" height="815" transform="rotate(-5 1374.95 837.193)" fill="#43CDEB" fill-opacity="0.73"/>
-<rect x="1671" y="707" width="772" height="815" fill="#171321"/>
-<rect x="1251" y="935.284" width="772" height="815" transform="rotate(-5 1251 935.284)" fill="#43CDEB"/>
-<rect x="1032.92" y="1279.67" width="703" height="742" transform="rotate(-10 1032.92 1279.67)" fill="#DF85FF"/>
+<rect x="2360" y="74" width="72" height="72" rx="20" fill="white"/>
+<rect x="2268" y="74" width="72" height="72" rx="20" fill="white"/>
+<rect x="2004" y="74" width="240" height="72" rx="10" fill="white"/>
+<rect x="1255" y="1300.6" width="683" height="786" transform="rotate(-10 1255 1300.6)" fill="#DF85FF" fill-opacity="0.73"/>
+<rect x="1514.95" y="943.193" width="772" height="815" transform="rotate(-5 1514.95 943.193)" fill="#43CDEB" fill-opacity="0.73"/>
+<rect x="1811" y="813" width="772" height="815" fill="#171321"/>
+<rect x="1391" y="1041.28" width="772" height="815" transform="rotate(-5 1391 1041.28)" fill="#43CDEB"/>
+<rect x="1172.92" y="1385.67" width="703" height="742" transform="rotate(-10 1172.92 1385.67)" fill="#DF85FF"/>
 <g filter="url(#filter1_b_209_12)">
-<path d="M1264 170H2480V1650C2480 1760.46 2390.46 1850 2280 1850H1264V170Z" fill="#E6E2F2" fill-opacity="0.9"/>
+<path d="M1264 170H2480V1650C2480 1760.46 2390.46 1850 2280 1850H1264V170Z" fill="#E6E2F2" fill-opacity="0.8"/>
 </g>
 <rect x="1334" y="630" width="320" height="320" rx="20" fill="#7B5EC3"/>
 <rect x="1714" y="240" width="320" height="320" rx="20" fill="#7B5EC3"/>
 <rect x="2094" y="240" width="320" height="320" rx="20" fill="#7B5EC3"/>
 <rect x="1334" y="240" width="320" height="320" rx="20" fill="#7B5EC3"/>
 <rect x="1334" y="240" width="320" height="320" rx="20" fill="#7B5EC3"/>
-<rect x="1714" y="630" width="320" height="320" rx="20" fill="#F5F5F5"/>
-<rect x="1863" y="730" width="18" height="120" rx="9" fill="#171321"/>
-<rect x="1812" y="799" width="18" height="120" rx="9" transform="rotate(-90 1812 799)" fill="#171321"/>
+<rect x="1334" y="1660" width="934" height="120" rx="20" fill="white"/>
 </g>
 <defs>
-<filter id="filter0_d_209_12" x="0" y="0" width="2532" height="2060.4" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter0_d_209_12" x="0" y="0" width="2633" height="2166.4" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
 <feOffset/>

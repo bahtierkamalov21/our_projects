@@ -18,35 +18,37 @@
     <v-btn
       v-if="!mobile"
       @click="set_navigation_index(0)"
-      color="transparent"
       class="nav__link text-capitalize font-weight-regular pa-2"
+      :class="{ 'nav__link-active': swiper_index_home }"
       >Home</v-btn
     >
     <v-btn
       v-if="!mobile"
       @click="set_navigation_index(1)"
-      color="transparent"
       class="nav__link text-capitalize font-weight-regular pa-2"
+      :class="{ 'nav__link-active': swiper_index_projects }"
       >Projects</v-btn
     >
     <v-btn
       v-if="!mobile"
       @click="set_navigation_index(2)"
-      color="transparent"
       class="nav__link text-capitalize font-weight-regular pa-2"
+      :class="{ 'nav__link-active': swiper_index_contacts }"
       >Contacts</v-btn
     >
     <v-spacer></v-spacer>
     <v-btn
+      min-width="32"
+      width="32"
       min-height="32"
       height="32"
-      class="text-capitalize font-weight-bold mr-2 pl-2"
+      color="white"
+      class="nav__bars mr-2"
       v-if="!mobile"
     >
       <span style="color: dodgerblue">
-        <font-awesome-icon icon="fa-brands fa-telegram" class="fa-xl mr-2" />
+        <font-awesome-icon icon="fa-brands fa-telegram" class="fa-2xl" />
       </span>
-      Telegram
     </v-btn>
     <v-btn
       min-width="32"
@@ -82,12 +84,28 @@ export default {
       drawer: false,
       navigation_index: null,
       mobile: false,
+      swiper_index_home: true,
+      swiper_index_projects: false,
+      swiper_index_contacts: false,
     };
   },
   mounted() {
     setInterval(() => {
       this.nav_default = window.innerWidth <= 960;
       this.mobile = window.innerWidth <= 600;
+      if (document.getElementById("swiper__index").innerHTML === "0") {
+        this.swiper_index_home = true;
+        this.swiper_index_projects = false;
+        this.swiper_index_contacts = false;
+      } else if (document.getElementById("swiper__index").innerHTML === "1") {
+        this.swiper_index_home = false;
+        this.swiper_index_projects = true;
+        this.swiper_index_contacts = false;
+      } else if (document.getElementById("swiper__index").innerHTML === "2") {
+        this.swiper_index_home = false;
+        this.swiper_index_projects = false;
+        this.swiper_index_contacts = true;
+      }
     });
   },
   methods: {
@@ -104,12 +122,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.nav__bars {
-  border-radius: 4px;
-}
-.nav__link {
-  text-decoration: none;
-  color: #e0e0e0 !important;
-  border-radius: 4px;
+.nav {
+  &__link {
+    text-decoration: none;
+    color: #e0e0e0 !important;
+    background-color: transparent !important;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    &-active {
+      background-color: rgba(255, 255, 255, 0.1) !important;
+      transition: all 0.2s ease;
+    }
+  }
+  &__bars {
+    border-radius: 5px;
+    background-color: #ffffff !important;
+  }
 }
 </style>
