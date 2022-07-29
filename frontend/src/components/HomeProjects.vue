@@ -120,4 +120,21 @@ export default {
     box-shadow: 0 0 20px 0 rgba(34, 60, 80, 0.2) !important;
   }
 }
+@media screen and (max-width: 600px) {
+  .projects {
+    &__container {
+      align-items: inherit;
+    }
+    &__none {
+      width: 90% !important;
+      & > *:first-child {
+        font-size: 18px !important;
+        padding: 22px !important;
+      }
+      & > *:last-child {
+        margin-top: 10% !important;
+      }
+    }
+  }
+}
 </style>

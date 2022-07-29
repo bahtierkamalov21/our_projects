@@ -108,6 +108,6 @@ export default {
 }
 .swiper {
   overflow: hidden;
-  height: 90vh;
+  height: calc(100vh - 63.5px);
 }
 </style>

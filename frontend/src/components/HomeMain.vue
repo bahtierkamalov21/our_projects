@@ -46,7 +46,7 @@ export default {
   }
   &__background {
     width: 100%;
-    height: 82%;
+    height: 80.5%;
     position: absolute;
     bottom: 0;
     background-color: white;
@@ -110,6 +110,9 @@ export default {
       font-size: calc(var(--index) * 1.3);
       line-height: 18px;
     }
+    &__background {
+      height: 87.5%;
+    }
     &__left {
       width: 100%;
     }
@@ -117,6 +120,9 @@ export default {
       width: 100%;
       justify-content: inherit;
       display: inherit;
+      & > div {
+        width: 45%;
+      }
     }
     &__h1 {
       line-height: 42px;
