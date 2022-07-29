@@ -36,9 +36,9 @@ html {
 
 /* change theme */
 .theme--light {
-  transition: all 0.4s ease;
+  transition: all 0.4s ease !important;
 }
 .theme--dark {
-  transition: all 0.4s ease;
+  transition: all 0.4s ease !important;
 }
 </style>
