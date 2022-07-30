@@ -51,7 +51,7 @@ export default {
   mounted() {
     // backend
     axios
-      .get("http://127.0.0.1:8000/api/v1/projects")
+      .get(this.$store.state.api_url)
       .then((response) => {
         this.projects = response.data;
       })
