@@ -70,10 +70,10 @@ export default {
         document.title = "Our Projects";
         document.getElementById("swiper__index").innerHTML = "0";
       } else if (this.activeIndex === 1) {
-        document.title = "Our Projects - Projects";
+        document.title = "Our Projects | Projects";
         document.getElementById("swiper__index").innerHTML = "1";
       } else if (this.activeIndex === 2) {
-        document.title = "Our Projects - Contacts";
+        document.title = "Our Projects | Contacts";
         document.getElementById("swiper__index").innerHTML = "2";
       }
     });

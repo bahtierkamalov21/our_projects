@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  our_projects_backend_db:
+    build: 
+    container_name: our_projects_backend_db
+  our_projects_backend:
+    build: ./app
+    container_name: our_projects_backend
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./app/:/usr/src/app/
+    ports:
+      - 8000:8000
+    depends_on:
+      - our_projects_backend_db
+  our_projects_frontend:
+    build: ./frontend
+    container_name: our_projects_frontend
+    ports:
+      - 8080:8080
+    depends_on:
+      - our_projects_backend
+  our_projects_bot:
+    build: ./bot
+    container_name: our_projects_bot
+    depends_on:
+      - our_projects_backend
