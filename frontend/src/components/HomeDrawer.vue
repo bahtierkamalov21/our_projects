@@ -9,7 +9,7 @@
     v-model="get_drawer"
   >
     <v-container class="drawer__container pa-4">
-      <div v-if="!projects.length" class="projects__none">
+      <div v-if="projects_length != null" class="projects__none">
         <v-card-title class="pa-0">Projects coming soon...</v-card-title>
         <span style="color: #ffffff">
           <font-awesome-icon icon="fa-solid fa-code" class="fa-3x" />
@@ -21,11 +21,11 @@
       <v-btn
         block
         elevation="0"
+        :disabled="disabled_button"
         class="drawer__button text-capitalize font-weight-regular"
-        ><p class="ma-0">
-          Show <span class="text-lowercase">more</span>
-        </p></v-btn
       >
+        <p class="ma-0">Show <span class="text-lowercase">more</span></p>
+      </v-btn>
     </v-container>
   </v-navigation-drawer>
 </template>
@@ -41,6 +41,7 @@ export default {
     return {
       get_drawer: this.drawer,
       projects: null,
+      projects_length: null,
     };
   },
   watch: {
@@ -48,12 +49,22 @@ export default {
       this.get_drawer = !this.get_drawer;
     },
   },
+  computed: {
+    disabled_button: function () {
+      if (this.projects_length > 6) {
+        return false;
+      } else {
+        return true;
+      }
+    },
+  },
   mounted() {
     // backend
     axios
-      .get(this.$store.state.api_url)
+      .get(this.$store.state.api_url + "projects")
       .then((response) => {
         this.projects = response.data;
+        this.projects_length = this.projects.length;
       })
       .catch((error) => console.log(error));
   },
@@ -65,16 +76,19 @@ export default {
   overflow: hidden;
   backdrop-filter: blur(16px);
   z-index: 40;
+
   &__container {
     height: 100%;
     position: relative;
   }
+
   &__button {
     position: absolute;
     bottom: 16px;
     min-width: 95% !important;
   }
 }
+
 .projects__none {
   height: 92%;
   position: relative;
@@ -83,6 +97,7 @@ export default {
   justify-content: center;
   align-items: center;
   color: #000000;
+
   & > *:first-child {
     text-transform: uppercase;
     font-weight: 600;
@@ -91,6 +106,7 @@ export default {
     width: -webkit-fill-available;
   }
 }
+
 @media screen and (max-width: 600px) {
   .drawer {
     width: 100% !important;

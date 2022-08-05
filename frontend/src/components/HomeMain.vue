@@ -46,7 +46,7 @@ export default {
   }
   &__background {
     width: 100%;
-    height: 20vh;
+    height: 71.5vh;
     position: absolute;
     bottom: 0;
     background-color: white;

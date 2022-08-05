@@ -79,7 +79,7 @@ export default {
     });
     // backend
     axios
-      .get(this.$store.state.api_url)
+      .get(this.$store.state.api_url + "projects")
       .then((response) => {
         this.projects = response.data;
       })
