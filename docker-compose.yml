@@ -1,28 +1,59 @@
-version: '3'
+version: "3"
 
 services:
-  our_projects_backend_db:
-    build: 
-    container_name: our_projects_backend_db
-  our_projects_backend:
-    build: ./app
-    container_name: our_projects_backend
-    command: python manage.py runserver 0.0.0.0:8000
+  # Django server
+  django:
+    build: .
+    container_name: django
+    command: python3 manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
     volumes:
-      - ./app/:/usr/src/app/
+      - ./:/usr/src/app/
+    links:
+      - db
+    depends_on:
+      - db
+  # Django databese
+  db:
+    image: mysql:latest
+    container_name: db
+    command:
+      - mysqld
+      - "--character-set-server=utf8mb4"
+      - "--collation-server=utf8mb4_general_ci"
+    environment:
+      MYSQL_DATABASE: our_projects_db
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: ba81906377
+      MYSQL_PASSWORD: ba81906377
+      MYSQL_ROOT_HOST: "3306"
+    restart: on-failure
+    volumes:
+      - ./mysql-volume:/var/lib/mysql
+  # Frontend
+  frontend:
+    build: frontend/
+    container_name: frontend
+    command: npm run serve
     ports:
-      - 8000:8000
+      - "8080:8080"
     depends_on:
-      - our_projects_backend_db
-  our_projects_frontend:
-    build: ./frontend
-    container_name: our_projects_frontend
+      - django
+  # Phpmyadmin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    links:
+      - db
+    depends_on:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      PMA_ARBITRARY: 1
+      UPLOAD_LIMIT: 300M
+    restart: always
     ports:
-      - 8080:8080
-    depends_on:
-      - our_projects_backend
-  our_projects_bot:
-    build: ./bot
-    container_name: our_projects_bot
-    depends_on:
-      - our_projects_backend
+      - "7000:80"

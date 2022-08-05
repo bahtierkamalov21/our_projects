@@ -1,12 +1,15 @@
+# Pull official base image
 FROM node:14.17.3
 
-WORKDIR /app  
+# Set work directory
+WORKDIR /usr/src/app
 
+# Set timezone
+ENV TZ=Europe/Moscow
+
+# Install dependencies
 COPY package*.json ./
-
-RUN npm i -g @vue/cli
 RUN npm install
 
-CMD [ "npm", "run", "serve" ]
-
-EXPOSE 8080
+# Copy project
+COPY . .
