@@ -34,6 +34,23 @@
 <script>
 export default {
   name: "HomeMain",
+  mounted() {
+    // before window resize
+    this.element_substitution();
+    window.addEventListener("resize", () => {
+      this.element_substitution();
+    });
+  },
+  methods: {
+    // adaption of header__background
+    element_substitution() {
+      if (document.querySelector(".header__left").clientHeight <= 360) {
+        document.querySelector(".header__background").style.height = "64.5vh";
+      } else {
+        document.querySelector(".header__background").style.height = "71.5vh";
+      }
+    },
+  },
 };
 </script>
 

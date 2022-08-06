@@ -52,7 +52,7 @@ export default {
       projects: null,
     };
   },
-  mounted() {
+  beforeMount() {
     this.swiper = new Swiper(".swiper", {
       direction: "vertical",
       autoHeight: true,
@@ -65,6 +65,8 @@ export default {
         clickable: true,
       },
     });
+  },
+  mounted() {
     this.swiper.on("activeIndexChange", function () {
       if (this.activeIndex === 0) {
         document.title = "Our Projects";
@@ -77,7 +79,7 @@ export default {
         document.getElementById("swiper__index").innerHTML = "2";
       }
     });
-    // Backend
+    // Get projects from api
     axios
       .get(this.$store.state.api_url + "projects")
       .then((response) => {
@@ -86,9 +88,11 @@ export default {
       .catch((error) => console.log(error));
   },
   methods: {
+    // Get emit drawer
     get_drawer(drawer) {
       this.drawer = drawer;
     },
+    // Get emit navigation_index
     get_navigation_index(index) {
       if (index === 0) {
         this.swiper.slideTo(0);

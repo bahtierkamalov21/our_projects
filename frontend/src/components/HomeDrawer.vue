@@ -51,11 +51,11 @@ export default {
   },
   computed: {
     disabled_button: function () {
-      return this.projects_length < 6;
+      return this.projects_length > 6;
     },
   },
   mounted() {
-    // Backend
+    // Get projects from api
     axios
       .get(this.$store.state.api_url + "projects")
       .then((response) => {
