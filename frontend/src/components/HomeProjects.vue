@@ -10,8 +10,10 @@
         class="projects__none mb-6"
         v-if="!length"
       >
-        <v-card-title class="pa-8 ma-0">Projects coming soon...</v-card-title>
-        <span style="color: var(--v-black-base)">
+        <div class="projects__none__title">
+          <v-card-title class="pa-8 ma-0">Projects coming soon...</v-card-title>
+        </div>
+        <span>
           <font-awesome-icon icon="fa-solid fa-code" class="fa-3x" />
         </span>
       </v-card>
@@ -95,6 +97,9 @@ export default {
     flex-direction: column;
     display: flex;
     justify-content: center;
+    & > span {
+      color: var(--v-black-base);
+    }
   }
   &__none {
     position: relative;
@@ -105,11 +110,13 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    & > *:first-child {
-      text-transform: uppercase;
-      font-size: 22px;
-      font-weight: 600;
-      width: -webkit-fill-available;
+    &__title {
+      width: 100%;
+      & > * {
+        text-transform: uppercase;
+        font-size: 22px;
+        font-weight: 600;
+      }
     }
     & > *:last-child {
       margin-top: 4%;
@@ -127,9 +134,11 @@ export default {
     }
     &__none {
       width: 90% !important;
-      & > *:first-child {
-        font-size: 18px !important;
-        padding: 22px !important;
+      &__title {
+        & > * {
+          font-size: 18px !important;
+          padding: 22px !important;
+        }
       }
       & > *:last-child {
         margin-top: 10% !important;

@@ -77,7 +77,7 @@ export default {
         document.getElementById("swiper__index").innerHTML = "2";
       }
     });
-    // backend
+    // Backend
     axios
       .get(this.$store.state.api_url + "projects")
       .then((response) => {

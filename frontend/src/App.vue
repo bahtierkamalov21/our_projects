@@ -34,7 +34,7 @@ html {
   background: var(--v-black-base);
 }
 
-/* change theme */
+/* Change theme */
 .theme--light {
   transition: all 0.4s ease !important;
 }

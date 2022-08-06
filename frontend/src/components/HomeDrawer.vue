@@ -9,7 +9,7 @@
     v-model="get_drawer"
   >
     <v-container class="drawer__container pa-4">
-      <div v-if="projects_length != null" class="projects__none">
+      <div v-if="projects_length === null" class="projects__none">
         <v-card-title class="pa-0">Projects coming soon...</v-card-title>
         <span style="color: #ffffff">
           <font-awesome-icon icon="fa-solid fa-code" class="fa-3x" />
@@ -51,15 +51,11 @@ export default {
   },
   computed: {
     disabled_button: function () {
-      if (this.projects_length > 6) {
-        return false;
-      } else {
-        return true;
-      }
+      return this.projects_length < 6;
     },
   },
   mounted() {
-    // backend
+    // Backend
     axios
       .get(this.$store.state.api_url + "projects")
       .then((response) => {
@@ -103,7 +99,7 @@ export default {
     font-weight: 600;
     position: absolute;
     top: 0;
-    width: -webkit-fill-available;
+    left: 0;
   }
 }
 
