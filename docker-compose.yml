@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  # Django server
+  # Django
   django:
     build: .
     container_name: django
@@ -52,3 +52,12 @@ services:
     restart: always
     ports:
       - "7000:80"
+  # Nginx server
+  nginx_server:
+    image: nginx:latest
+    container_name: nginx_server
+    ports:
+      - "80:80"
+    restart: always
+    volumes:
+      - ./nginx_server.conf:/etc/nginx/nginx.conf
