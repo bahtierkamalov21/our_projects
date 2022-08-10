@@ -11,21 +11,23 @@ services:
     volumes:
       - ./:/usr/src/app/
     links:
-      - db
+      - database
     depends_on:
-      - db
+      - database
   # Django database
-  db:
+  database:
     image: mysql:latest
-    container_name: db
+    container_name: database
     environment:
-      MYSQL_DATABASE: our_projects_db
+      MYSQL_DATABASE: our_projects_database
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ba81906377
       MYSQL_ROOT_PASSWORD: ba81906377
     ports:
       - "3306:3306"
     restart: always
     volumes:
-      - ./mysql-volume:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
   # Frontend
   frontend:
     build: frontend/
@@ -34,30 +36,34 @@ services:
     restart: always
     ports:
       - "8080:8080"
+    volumes:
+      - ./frontend:/usr/src/app
     depends_on:
       - django
   # Phpmyadmin
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
+    image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin
     links:
-      - db
+      - database
     depends_on:
-      - db
+      - database
     environment:
-      PMA_HOST: db
+      PMA_HOST: database
       PMA_PORT: 3306
       PMA_ARBITRARY: 1
       UPLOAD_LIMIT: 300M
     restart: always
     ports:
       - "7000:80"
-  # Nginx server
-  nginx_server:
-    image: nginx:latest
-    container_name: nginx_server
-    ports:
-      - "80:80"
-    restart: always
-    volumes:
-      - ./nginx_server.conf:/etc/nginx/nginx.conf
+  # # Nginx server
+  # nginx_server:
+  #   image: nginx:latest
+  #   container_name: nginx_server
+  #   ports:
+  #     - "80:80"
+  #   restart: always
+  #   volumes:
+  #     - ./nginx_server.conf:/etc/nginx/nginx.conf
+volumes:
+  mysql_data:
