@@ -14,20 +14,21 @@ services:
       - database
     depends_on:
       - database
-  # Django database
+  # Database
   database:
-    image: mysql:latest
+    image: mysql:8.0
     container_name: database
+    command: mysqld
     environment:
-      MYSQL_DATABASE: our_projects_database
-      MYSQL_USER: root
-      MYSQL_PASSWORD: ba81906377
-      MYSQL_ROOT_PASSWORD: ba81906377
+      MYSQL_DATABASE: "our_projects_database"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "ba81906377"
+      MYSQL_ROOT_PASSWORD: "ba81906377"
     ports:
       - "3306:3306"
-    restart: always
+    restart: on-failure
     volumes:
-      - mysql_data:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
   # Frontend
   frontend:
     build: frontend/
@@ -37,7 +38,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./frontend:/usr/src/app
+      - ./frontend/:/usr/src/app
     depends_on:
       - django
   # Phpmyadmin
@@ -55,9 +56,9 @@ services:
       UPLOAD_LIMIT: 300M
     restart: always
     ports:
-      - "7000:80"
+      - "8070:80"
   # # Nginx server
-  # nginx_server:
+  # webserver:
   #   image: nginx:latest
   #   container_name: nginx_server
   #   ports:
@@ -66,4 +67,4 @@ services:
   #   volumes:
   #     - ./nginx_server.conf:/etc/nginx/nginx.conf
 volumes:
-  mysql_data:
+  mysql-data:

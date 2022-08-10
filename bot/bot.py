@@ -1,5 +1,4 @@
 import logging
-from multiprocessing.connection import wait
 from aiogram import Bot, Dispatcher, types, executor
 from telegram import CallbackQuery, InputFile
 from messages import *

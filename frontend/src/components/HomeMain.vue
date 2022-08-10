@@ -128,7 +128,7 @@ export default {
       line-height: 18px;
     }
     &__background {
-      height: 87.5%;
+      height: 64.5vh;
     }
     &__left {
       width: 100%;

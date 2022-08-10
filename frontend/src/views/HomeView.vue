@@ -52,7 +52,8 @@ export default {
       projects: null,
     };
   },
-  beforeMount() {
+  mounted() {
+    // Init swiper.js
     this.swiper = new Swiper(".swiper", {
       direction: "vertical",
       autoHeight: true,
@@ -65,8 +66,7 @@ export default {
         clickable: true,
       },
     });
-  },
-  mounted() {
+    // Swiper.js hook function
     this.swiper.on("activeIndexChange", function () {
       if (this.activeIndex === 0) {
         document.title = "Our Projects";
