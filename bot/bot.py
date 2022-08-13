@@ -1,6 +1,5 @@
 import logging
 from aiogram import Bot, Dispatcher, types, executor
-from telegram import CallbackQuery, InputFile
 from messages import *
 from global_settings import *
 import requests

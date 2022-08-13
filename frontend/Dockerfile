@@ -13,3 +13,5 @@ RUN npm install
 
 # Copy project
 COPY . .
+
+EXPOSE 8080
