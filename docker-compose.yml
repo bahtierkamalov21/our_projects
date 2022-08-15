@@ -58,16 +58,16 @@ services:
     ports:
       - 8070:80
   # Nginx server
-  webserver:
+  nginx_server:
     image: nginx:latest
-    container_name: webserver
+    container_name: nginx_server
     ports:
       - 80:80
       - 443:443
     restart: always
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
-    links:
-      - frontend
+      - ./ssl/certificate.crt:/etc/nginx/ssl/certificate.crt
+      - ./ssl/certificate.key:/etc/nginx/ssl/certificate.key
 volumes:
   mysql-data:
