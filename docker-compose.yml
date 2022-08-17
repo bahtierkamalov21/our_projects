@@ -5,69 +5,77 @@ services:
   django:
     build: .
     container_name: django
-    command: python3 manage.py runserver 0.0.0.0:8000
+    command: >
+      bash -c "python3 manage.py runserver 0.0.0.0:8000
+      && python3 manage.py migrate"
     ports:
-      - 8000:8000
+      - "8000:8000"
     volumes:
       - ./:/usr/src/app/
-    links:
-      - database
     depends_on:
       - database
+    networks:
+      - main-network
   # Database
   database:
     image: mysql:8.0
     container_name: database
-    command: mysqld
     environment:
       MYSQL_DATABASE: "our_projects_database"
-      MYSQL_USER: "root"
-      MYSQL_PASSWORD: "ba81906377"
       MYSQL_ROOT_PASSWORD: "ba81906377"
-    ports:
-      - 3306:3306
     restart: on-failure
+    ports:
+      - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
+    networks:
+      - main-network
   # Frontend
-  frontend:
-    build: frontend/
-    container_name: frontend
-    command: npm run serve
-    restart: always
-    ports:
-      - 8080:8080
-    volumes:
-      - ./frontend:/usr/src/app
-    depends_on:
-      - django
+  #frontend:
+    #build: ./frontend
+    #container_name: frontend
+    #command: npm run serve
+    #restart: always
+    #ports:
+    #  - "8080:8080"
+    #volumes:
+    #  - ./frontend:/usr/src/app
+    #depends_on:
+    #  - django
+    #networks:
+    #  - main-network
   # Phpmyadmin
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
-    links:
-      - database
-    depends_on:
-      - database
-    environment:
-      PMA_HOST: database
-      PMA_PORT: 3306
-      PMA_ARBITRARY: 1
-      UPLOAD_LIMIT: 300M
-    restart: always
-    ports:
-      - 8070:80
+  #phpmyadmin:
+    #image: phpmyadmin/phpmyadmin
+    #container_name: phpmyadmin
+    #environment:
+    #  PMA_HOST: database
+    #  PMA_PORT: 3306
+    #  PMA_ARBITRARY: 1
+    #  UPLOAD_LIMIT: 300M
+    #restart: always
+    #ports:
+    #  - "8070:80"
+    #depends_on:
+    #  - database
+    #networks:
+    #  - main-network
   # Nginx server
-  nginx_server:
-    image: nginx:latest
-    container_name: nginx_server
-    ports:
-      - 80:80
-      - 443:443
-    restart: always
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-      - ./ssl/certificate.crt:/etc/nginx/ssl/certificate.crt
-      - ./ssl/certificate.key:/etc/nginx/ssl/certificate.key
+  #nginx_server:
+    #image: nginx:latest
+    #container_name: nginx_server
+    #restart: always
+    #ports:
+    #  - "80:80"
+    #  - "443:443"
+    #volumes:
+    #  - ./nginx_development.conf:/etc/nginx/nginx.conf
+    #  - ./ssl/certificate.crt:/etc/nginx/ssl/certificate.crt
+    #  - ./ssl/certificate.key:/etc/nginx/ssl/certificate.key
+    #networks:
+    #  - main-network
 volumes:
   mysql-data:
+networks:
+  main-network:
+    driver: bridge
